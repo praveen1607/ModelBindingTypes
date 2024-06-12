@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ModelBindingTypes.Models;
 
@@ -9,6 +10,7 @@ namespace ModelBindingTypes.Controllers
     public class Countries_4Controller : ControllerBase
     {
         [HttpGet("{name}/{population}/{capital}")]
+        [Authorize]
         public IActionResult GetCountry_4(string name, int population, string capital)
         {
             return Ok($"Country name : {name}   Population : {population}  Capital : {capital}");

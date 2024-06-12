@@ -11,6 +11,11 @@ namespace ModelBindingTypes.Custom_Binder
 
             var value = bindingContext.ValueProvider.GetValue("id");
 
+            var reader = new StreamReader(bindingContext.HttpContext.Request.Body);
+
+            // var body = val.ReadAtLeastAsync();
+            var body =  reader.ReadToEndAsync();
+
             var res = value.FirstValue;
             
             if(!int.TryParse(res, out int id))
